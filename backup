@@ -1,0 +1,5 @@
+#!/bin/bash
+source=/path/of/source
+destination=/path/of/destantion
+backup="backup $(date)"
+tar -cvf "$source/$backup.tar" "$destination"
