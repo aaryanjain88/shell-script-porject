@@ -6,3 +6,5 @@ output_file="${1}.enc"
 
 #Encrypt the file
 openssl enc -aes-256-cbc -salt -in "$input_file" -out "$output_file" 
+echo " [+] YOUR OUTPUT IS $output_file"
+echo "[+] THANKING YOU $(whoami)"
