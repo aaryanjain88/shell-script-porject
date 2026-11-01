@@ -1,0 +1,32 @@
+#!/bin/bash
+cat << "EOF"
+ ____ |  |__ ______   ___________
+_/ ___\|  |  \\____ \_/ __ \_  __ \
+\  \___|   Y  \  |_> >  ___/|  | \/
+ \___  >___|  /   __/ \___  >__|
+     \/     \/|__|        \/
+EOF
+
+if [ $EUID -ne 0 ]
+then
+    echo "[-] Error: Only root can change permissions!"
+    exit 1
+fi
+echo "[+] Welcome $(whoami) Please Enter File You Want Change"
+read -p "ENTER FILE YOU WANT CNANGE THE PERMISSION : " file
+if [ ! -f "$file" ]
+then
+    echo "Dear [+] $(whoami )$file is not exist"
+    echo "[+] Thanking You Visit Again $(whoami) $(date)"
+    exit 1
+else
+    read -p "Enter Permission You Want Change : "  per
+    if chmod "$per" "$file" 
+    then
+        echo "your $file permission is changed"
+        ls -l "$file"
+    else
+        echo "your $file permission is not changed"
+    fi
+fi
+echo "[+] Thanking You Visit Again $(whoami) $(date)"
