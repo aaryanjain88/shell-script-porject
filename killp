@@ -1,0 +1,28 @@
+#!/bin/bash
+cat <<'EOF'
+ _  __ _  _     _       ____  ____  ____  ____  _____ ____  ____ 
+/ |/ // \/ \   / \     /  __\/  __\/  _ \/   _\/  __// ___\/ ___\
+|   / | || |   | |     |  \/||  \/|| / \||  /  |  \  |    \|    \
+|   \ | || |_/\| |_/\  |  __/|    /| \_/||  \__|  /_ \___ |\___ |
+\_|\_\\_/\____/\____/  \_/   \_/\_\\____/\____/\____\\____/\____/
+EOF
+
+echo "[+] Welecome Process Killer $(whoami) $(date)"
+read -p "ENTER PROCESS : " process
+echo "YOUR PROCESS IS : [+] " 
+ps -ef | grep "${process,,}" 
+read -p "[+] $(whoami) TO KILL ID ENTER ID AND FOR EXIT TYPE EXIT : " id
+if [ "${id,,}" == "exit" ]
+then
+    echo "[+] thanking You $(whoami) visit again $(date)" 
+    exit
+else
+    if kill -9 "$id"
+    then 
+        echo "$id kill succesful"
+        echo "[+] thanking You $(whoami) visit again $(date)" 
+    else
+        echo "$id kill not succesful"
+        echo "[+] thanking You $(whoami) visit again $(date)" 
+    fi
+fi
